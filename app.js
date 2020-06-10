@@ -34,11 +34,14 @@ function promptEmployee() {
             type: "input",
             message: "What is the name of your employee?",
             name: "employeeName",
+            validate: validateName
         },
+
         {
             type: "input",
             message: "What is the email of the employee?",
             name: "employeeEmail",
+            validate: validateMail
         },
         // MANAGER SECTION PROMPT
         {
@@ -91,4 +94,22 @@ function promptEmployee() {
         })
         .then(() => console.log("file saved"))
         .catch((e) => console.log(e))
+}
+
+function validateName(name) {
+    if (!name.includes(" ")) {
+        return "You have to input first and last name"
+    }
+    else {
+        return true
+    }
+}
+
+function validateMail(name) {
+    if (!name.includes("@") || !name.includes(".")) {
+        return "You have to input an email address, such as engineer@template.com"
+    }
+    else {
+        return true
+    }
 }
